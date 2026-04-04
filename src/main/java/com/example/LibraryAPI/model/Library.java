@@ -6,13 +6,14 @@ import java.util.List;
 public class Library {
     private List<Book> books = new ArrayList<>();
 
-    public void addBook(Book book){
+    public Book addBook(Book book){
         for (Book b : books){
             if (b.getIsbn().equals(book.getIsbn())){
                 throw new IllegalArgumentException("Book with ISBN " + book.getIsbn() + " already exists");
             }
         }
         books.add(book);
+        return book;
     }
 
     public void removeBook(String isbn){
