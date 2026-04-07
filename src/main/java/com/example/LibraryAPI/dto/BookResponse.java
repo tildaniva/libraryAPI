@@ -1,5 +1,8 @@
 package com.example.LibraryAPI.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Book response")
 public class BookResponse {
     private int id;
     private String title;

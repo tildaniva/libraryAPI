@@ -4,6 +4,8 @@ import com.example.LibraryAPI.dto.BookRequest;
 import com.example.LibraryAPI.dto.BookResponse;
 import com.example.LibraryAPI.model.Book;
 import com.example.LibraryAPI.service.LibraryService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,9 @@ public class BookController {
     }
 
     // POST /api/v1/books
+    @Operation(summary = "Create a new book")
+    @ApiResponse(responseCode = "201", description = "Successfully created book")
+    @ApiResponse(responseCode = "400", description = "Invalid input")
     @PostMapping
     public ResponseEntity<BookResponse> createBook(@RequestBody BookRequest request) {
 
@@ -52,6 +57,8 @@ public class BookController {
     }
 
     // GET /api/v1/books
+    @Operation(summary = "Get all books")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved list of books")
     @GetMapping
     public ResponseEntity<List<BookResponse>> getAllBooks() {
 
@@ -70,6 +77,9 @@ public class BookController {
     }
 
     // GET /api/v1/books/{id}
+    @Operation(summary = "Get book by ID")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved book")
+    @ApiResponse(responseCode = "404", description = "Book not found")
     @GetMapping("/{id}")
     public ResponseEntity<BookResponse> getBookById(@PathVariable int id) {
 
