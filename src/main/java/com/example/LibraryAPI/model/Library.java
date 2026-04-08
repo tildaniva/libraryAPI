@@ -1,5 +1,7 @@
 package com.example.LibraryAPI.model;
 
+import com.example.LibraryAPI.exception.BookNotFoundException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class Library {
                 return book;
             }
         }
-        throw new IllegalArgumentException("Book not found " + isbn);
+        throw new BookNotFoundException("Book not found " + isbn);
     }
 
     public List<Book> getAllBooks(){
@@ -38,6 +40,6 @@ public class Library {
         return books.stream()
                 .filter(b -> b.getId() == id)
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Book not found"));
+                .orElseThrow(() -> new BookNotFoundException("Book not found"));
     }
 }
