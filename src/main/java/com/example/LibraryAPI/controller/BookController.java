@@ -82,22 +82,17 @@ public class BookController {
     @ApiResponse(responseCode = "404", description = "Book not found")
     @GetMapping("/{id}")
     public ResponseEntity<BookResponse> getBookById(@PathVariable int id) {
+        Book book = libraryService.getBookById(id);
 
-        try {
-            Book book = libraryService.getBookById(id);
+        BookResponse response = new BookResponse(
+                book.getId(),
+                book.getTitle(),
+                book.getAuthor(),
+                book.getIsbn(),
+                book.getPublicationYear()
+        );
 
-            BookResponse response = new BookResponse(
-                    book.getId(),
-                    book.getTitle(),
-                    book.getAuthor(),
-                    book.getIsbn(),
-                    book.getPublicationYear()
-            );
-
-            return ResponseEntity.ok(response);
-
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build(); // 404
-        }
+        return ResponseEntity.ok(response);
     }
+
 }
