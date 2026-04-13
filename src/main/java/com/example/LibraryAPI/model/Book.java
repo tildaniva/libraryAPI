@@ -1,26 +1,34 @@
 package com.example.LibraryAPI.model;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "books", uniqueConstraints = @UniqueConstraint(columnNames = "isbn"))
 public class Book {
-    private static int counter = 1;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String title;
-    private String author;
-    private String isbn;
-    private int publicationYear;
 
-    public Book(String title, String author, String isbn, int publicationYear){
-        this.id = counter++;
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private String author;
+
+    @Column(nullable = false, unique = true)
+    private String isbn;
+
+    private int publishedYear;
+
+    public Book(){}
+
+    public Book(String title, String author, String isbn, int publishedYear){
         this.title = title;
         this.author = author;
         this.isbn = isbn;
-        this.publicationYear = publicationYear;
-    }
-
-    public static int getCounter() {
-        return counter;
+        this.publishedYear = publishedYear;
     }
 
     public int getId() {
@@ -39,16 +47,31 @@ public class Book {
         return isbn;
     }
 
-    public int getPublicationYear() {
-        return publicationYear;
+    public int getPublishedYear() {
+        return publishedYear;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setPublishedYear(int publishedYear) {
+        this.publishedYear = publishedYear;
     }
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals (Object o){
         if(this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return isbn.equals(book.isbn);
+        if(!(o instanceof Book book)) return false;
+        return Objects.equals(isbn, book.isbn);
     }
 
     @Override
@@ -58,6 +81,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publicationYear=" + publicationYear + "]";
+        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publishedYear=" + publishedYear +"]";
     }
 }
