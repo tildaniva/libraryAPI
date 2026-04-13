@@ -8,14 +8,14 @@ public class BookResponse {
     private String title;
     private String author;
     private String isbn;
-    private int publicationYear;
+    private int publishedYear;
 
-    public BookResponse(int id, String title, String author, String isbn, int publicationYear){
+    public BookResponse(int id, String title, String author, String isbn, int publishedYear){
         this.id = id;
         this.title = title;
         this.author = author;
         this.isbn = isbn;
-        this.publicationYear = publicationYear;
+        this.publishedYear = publishedYear;
     }
 
     public int getId() {
@@ -28,5 +28,13 @@ public class BookResponse {
 
     public String getAuthor() {
         return author;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public int getPublishedYear() {
+        return publishedYear;
     }
 }

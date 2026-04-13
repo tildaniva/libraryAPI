@@ -10,14 +10,14 @@ public class BookRequest {
     @NotBlank
     private String author;
     private String isbn;
-    private int publicationYear;
+    private int publishedYear;
 
     public String getTitle() {
         return title;
     }
 
     public int getPublicationYear() {
-        return publicationYear;
+        return publishedYear;
     }
 
     public String getIsbn() {
@@ -40,7 +40,7 @@ public class BookRequest {
         this.isbn = isbn;
     }
 
-    public void setPublicationYear(int publicationYear) {
-        this.publicationYear = publicationYear;
+    public void setPublicationYear(int publishedYear) {
+        this.publishedYear = publishedYear;
     }
 }
