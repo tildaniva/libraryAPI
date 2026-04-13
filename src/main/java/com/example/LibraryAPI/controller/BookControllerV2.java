@@ -2,7 +2,6 @@ package com.example.LibraryAPI.controller;
 
 import com.example.LibraryAPI.dto.BookResponseV2;
 import com.example.LibraryAPI.dto.BookWrapperResponse;
-import com.example.LibraryAPI.service.LibraryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;

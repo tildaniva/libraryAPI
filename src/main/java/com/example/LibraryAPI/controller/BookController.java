@@ -3,7 +3,6 @@ package com.example.LibraryAPI.controller;
 import com.example.LibraryAPI.dto.BookRequest;
 import com.example.LibraryAPI.dto.BookResponse;
 import com.example.LibraryAPI.model.Book;
-import com.example.LibraryAPI.service.LibraryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
