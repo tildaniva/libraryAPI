@@ -1,7 +1,6 @@
 package com.example.LibraryAPI.service;
 
 import com.example.LibraryAPI.model.Book;
-import com.example.LibraryAPI.model.Library;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
