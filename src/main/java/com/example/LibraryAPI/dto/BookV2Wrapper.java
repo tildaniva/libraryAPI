@@ -2,11 +2,11 @@ package com.example.LibraryAPI.dto;
 
 import java.util.List;
 
-public class BookWrapperResponse {
+public class BookV2Wrapper {
     private List<BookResponseV2> data;
     private String version;
 
-    public BookWrapperResponse(List<BookResponseV2> data, String version) {
+    public BookV2Wrapper(List<BookResponseV2> data, String version) {
         this.data = data;
         this.version = version;
     }
