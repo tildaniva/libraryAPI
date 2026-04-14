@@ -22,6 +22,10 @@ public class Book {
 
     private int publishedYear;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name= "author_id")
+    private Author authorEntity;
+
     public Book(){}
 
     public Book(String title, String author, String isbn, int publishedYear){
@@ -51,6 +55,10 @@ public class Book {
         return publishedYear;
     }
 
+    public Author getAuthorEntity() {
+        return authorEntity;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -65,6 +73,10 @@ public class Book {
 
     public void setPublishedYear(int publishedYear) {
         this.publishedYear = publishedYear;
+    }
+
+    public void setAuthorEntity(Author authorEntity) {
+        this.authorEntity = authorEntity;
     }
 
     @Override
