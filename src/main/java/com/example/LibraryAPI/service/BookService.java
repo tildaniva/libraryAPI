@@ -2,7 +2,7 @@ package com.example.LibraryAPI.service;
 
 import com.example.LibraryAPI.dto.BookRequest;
 import com.example.LibraryAPI.exception.BookNotFoundException;
-import com.example.LibraryAPI.exception.DublicateIsbnException;
+import com.example.LibraryAPI.exception.DuplicateIsbnException;
 import com.example.LibraryAPI.model.Book;
 import com.example.LibraryAPI.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class BookService {
 
     public Book create(BookRequest dto) {
         if(dto.getIsbn() != null && !dto.getIsbn().isBlank() && bookRepository.existsByIsbn(dto.getIsbn())){
-            throw new DublicateIsbnException(dto.getIsbn());
+            throw new DuplicateIsbnException(dto.getIsbn());
         }
         Book book = new Book(dto.getTitle(), dto.getAuthor(), dto.getIsbn(), dto.getPublicationYear());
         return bookRepository.save(book);
