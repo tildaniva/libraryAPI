@@ -4,13 +4,13 @@ import jakarta.validation.constraints.NotNull;
 
 public class LoanRequest {
     @NotNull
-    private int bookId;
+    private Long bookId;
 
-    public int getBookId(){
+    public Long getBookId(){
         return bookId;
     }
 
-    public void setBookId(int bookId){
+    public void setBookId(Long bookId){
         this.bookId = bookId;
     }
 }

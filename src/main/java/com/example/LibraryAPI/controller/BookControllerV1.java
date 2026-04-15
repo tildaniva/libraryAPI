@@ -42,7 +42,7 @@ public class BookControllerV1 {
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "404", description = "Book not found")
     @GetMapping("/{id}")
-    public BookResponse findById(@PathVariable int id){
+    public BookResponse findById(@PathVariable Long id){
         return toResponse(bookService.findById(id));
     }
 

@@ -31,12 +31,12 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-    public AuthorDto findById(@PathVariable int id){
+    public AuthorDto findById(@PathVariable Long id){
         return authorService.findById(id);
     }
 
     @GetMapping("/{id}/books")
-    public List<BookResponse> booksByAuthor(@PathVariable int id){
+    public List<BookResponse> booksByAuthor(@PathVariable Long id){
         var a = authorService.findEntityById(id);
         return a.getBooks().stream()
                 .map(b -> new BookResponse(b.getId(), b.getTitle(), b.getAuthor(), b.getIsbn(), b.getPublishedYear()))

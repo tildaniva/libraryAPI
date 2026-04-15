@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "book_id", unique = true)
@@ -25,7 +25,7 @@ public class Loan {
         this.returnDate = null;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

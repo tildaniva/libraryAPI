@@ -3,13 +3,13 @@ package com.example.LibraryAPI.dto;
 import java.time.LocalDate;
 
 public class LoanResponse {
-    private int id;
-    private int bookId;
+    private Long id;
+    private Long bookId;
     private String bookTitle;
     private LocalDate loanDate;
     private LocalDate returnDate;
 
-    public LoanResponse(int id, int bookId, String bookTitle, LocalDate loanDate, LocalDate returnDate){
+    public LoanResponse(Long id, Long bookId, String bookTitle, LocalDate loanDate, LocalDate returnDate){
         this.id = id;
         this.bookId = bookId;
         this.bookTitle = bookTitle;
@@ -17,11 +17,11 @@ public class LoanResponse {
         this.returnDate = returnDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public int getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 

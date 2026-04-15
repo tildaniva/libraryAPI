@@ -3,24 +3,24 @@ package com.example.LibraryAPI.dto;
 import jakarta.validation.constraints.NotBlank;
 
 public class AuthorDto {
-    private int id;
+    private Long id;
     @NotBlank
     private String name;
     private int numberOfBooks;
 
     public AuthorDto() {}
 
-    public AuthorDto(int id, String name, int numberOfBooks) {
+    public AuthorDto(Long id, String name, int numberOfBooks) {
         this.id = id;
         this.name = name;
         this.numberOfBooks = numberOfBooks;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

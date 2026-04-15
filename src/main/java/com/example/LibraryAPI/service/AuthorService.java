@@ -19,11 +19,11 @@ public class AuthorService {
         return new AuthorDto(savedAuthor.getId(), savedAuthor.getName(), 0);
     }
 
-    public Author findEntityById(int id) {
+    public Author findEntityById(Long id) {
         return authorRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Author with id " + id + " not found"));
     }
 
-    public AuthorDto findById(int id) {
+    public AuthorDto findById(Long id) {
         Author author = findEntityById(id);
         return new AuthorDto(author.getId(), author.getName(), author.getBooks().size());
     }

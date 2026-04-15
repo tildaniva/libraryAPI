@@ -1,7 +1,7 @@
 package com.example.LibraryAPI.exception;
 
 public class BookNotFoundException extends RuntimeException {
-    public BookNotFoundException(int id) {
+    public BookNotFoundException(Long id) {
         super("Book with id " + id + " not found");
     }
 }

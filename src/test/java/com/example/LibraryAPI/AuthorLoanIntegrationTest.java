@@ -48,7 +48,7 @@ class AuthorLoanIntegrationTest {
         var a = new AuthorDto();
         a.setName("Jane Austen");
         var createdAuthor = restTemplate.postForEntity(base() + "/api/v1/authors", a, Map.class);
-        int authorId = ((int) createdAuthor.getBody().get("id"));
+        Long authorId = ((Number) createdAuthor.getBody().get("id")).longValue();
 
         var b = new BookRequest();
         b.setTitle("Pride and Prejudice");
@@ -69,7 +69,7 @@ class AuthorLoanIntegrationTest {
         b.setIsbn("123");
         b.setPublishedYear(2023);
        var createdBook = restTemplate.postForEntity(base() + "/api/v1/books", b, Map.class);
-       int bookId = ((int) createdBook.getBody().get("id"));
+       Long bookId = ((Number) createdBook.getBody().get("id")).longValue();
 
        var loanReq = new LoanRequest();
        loanReq.setBookId(bookId);
@@ -90,7 +90,7 @@ class AuthorLoanIntegrationTest {
         b.setIsbn("456");
         b.setPublishedYear(2024);
         var postBookResponse = restTemplate.postForEntity(base() + "/api/v1/books", b, Map.class);
-        int bookId = ((int) postBookResponse.getBody().get("id"));
+        Long bookId = ((Number) postBookResponse.getBody().get("id")).longValue();
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
         CountDownLatch latch = new CountDownLatch(1);
