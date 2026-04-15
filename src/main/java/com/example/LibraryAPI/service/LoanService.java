@@ -2,6 +2,7 @@ package com.example.LibraryAPI.service;
 
 import com.example.LibraryAPI.dto.LoanRequest;
 import com.example.LibraryAPI.dto.LoanResponse;
+import com.example.LibraryAPI.exception.BookAlreadyOnLoanException;
 import com.example.LibraryAPI.model.Book;
 import com.example.LibraryAPI.model.Loan;
 import com.example.LibraryAPI.repository.BookRepository;
@@ -28,7 +29,7 @@ public class LoanService {
                 .orElseThrow(() -> new IllegalArgumentException("Book with id " + request.getBookId() + " not found"));
 
         if (loanRepository.existsByBookIdAndReturnDateIsNull(book.getId())){
-            throw new IllegalArgumentException("Book is already on loan");
+            throw new BookAlreadyOnLoanException();
         }
         try {
             Loan saved = loanRepository.save(new Loan(book));
