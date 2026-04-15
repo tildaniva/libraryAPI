@@ -22,7 +22,7 @@ public class Book {
 
     private int publishedYear;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "author_id")
     private Author authorEntity;
 
