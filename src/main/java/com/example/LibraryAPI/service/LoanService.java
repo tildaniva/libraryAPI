@@ -7,6 +7,7 @@ import com.example.LibraryAPI.model.Loan;
 import com.example.LibraryAPI.repository.BookRepository;
 import com.example.LibraryAPI.repository.LoanRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,9 +30,12 @@ public class LoanService {
         if (loanRepository.existsByBookIdAndReturnDateIsNull(book.getId())){
             throw new IllegalArgumentException("Book is already on loan");
         }
-
-        Loan saved = loanRepository.save(new Loan(book));
-        return toDto(saved);
+        try {
+            Loan saved = loanRepository.save(new Loan(book));
+            return toDto(saved);
+        } catch (DataIntegrityViolationException e){
+            throw new IllegalArgumentException("Book is already on loan");
+        }
     }
 
     public List<LoanResponse> activeLoans(){
