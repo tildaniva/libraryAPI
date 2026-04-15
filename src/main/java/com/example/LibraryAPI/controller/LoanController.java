@@ -3,6 +3,8 @@ package com.example.LibraryAPI.controller;
 import com.example.LibraryAPI.dto.LoanRequest;
 import com.example.LibraryAPI.dto.LoanResponse;
 import com.example.LibraryAPI.service.LoanService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,10 @@ public class LoanController {
         this.loanService = loanService;
     }
 
+    @Operation(summary = "Create a new loan")
+    @ApiResponse(responseCode = "201", description = "Created")
+    @ApiResponse(responseCode = "400", description = "Book is already on loan/ invalid input")
+    @ApiResponse(responseCode = "404", description = "Book not found")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public LoanResponse create(@Valid @RequestBody LoanRequest request) {

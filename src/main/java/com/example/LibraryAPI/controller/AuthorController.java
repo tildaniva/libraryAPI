@@ -3,6 +3,8 @@ package com.example.LibraryAPI.controller;
 import com.example.LibraryAPI.dto.AuthorDto;
 import com.example.LibraryAPI.dto.BookResponse;
 import com.example.LibraryAPI.service.AuthorService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,10 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
+    @Operation(summary = "Create a new author")
+    @ApiResponse(responseCode = "201", description = "Created")
+    @ApiResponse(responseCode = "400", description = "Book is already on loan/ invalid input")
+    @ApiResponse(responseCode = "404", description = "Author not found")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AuthorDto createAuthor(@Valid @RequestBody AuthorDto authorDto) {
