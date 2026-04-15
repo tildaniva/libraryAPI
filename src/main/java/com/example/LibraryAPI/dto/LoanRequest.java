@@ -1,5 +1,7 @@
 package com.example.LibraryAPI.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 public class LoanRequest {
     @NotNull
     private int bookId;

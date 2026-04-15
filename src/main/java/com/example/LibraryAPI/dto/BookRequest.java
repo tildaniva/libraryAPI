@@ -40,7 +40,7 @@ public class BookRequest {
         this.isbn = isbn;
     }
 
-    public void setPublicationYear(int publishedYear) {
+    public void setPublishedYear(int publishedYear) {
         this.publishedYear = publishedYear;
     }
 }
