@@ -38,8 +38,8 @@ class AuthorLoanIntegrationTest {
 
     @BeforeEach
     void clear() {
-        bookRepository.deleteAll();
         loanRepository.deleteAll();
+        bookRepository.deleteAll();
         authorRepository.deleteAll();
     }
 
