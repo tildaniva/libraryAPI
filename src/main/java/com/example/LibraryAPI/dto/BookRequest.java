@@ -16,7 +16,7 @@ public class BookRequest {
         return title;
     }
 
-    public int getPublicationYear() {
+    public int getPublishedYear() {
         return publishedYear;
     }
 

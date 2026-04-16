@@ -22,7 +22,7 @@ public class AuthorController {
 
     @Operation(summary = "Create a new author")
     @ApiResponse(responseCode = "201", description = "Created")
-    @ApiResponse(responseCode = "400", description = "Book is already on loan/ invalid input")
+    @ApiResponse(responseCode = "400", description = "Invalid input")
     @ApiResponse(responseCode = "404", description = "Author not found")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

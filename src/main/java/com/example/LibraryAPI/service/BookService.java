@@ -21,7 +21,7 @@ public class BookService {
         if(dto.getIsbn() != null && !dto.getIsbn().isBlank() && bookRepository.existsByIsbn(dto.getIsbn())){
             throw new DuplicateIsbnException(dto.getIsbn());
         }
-        Book book = new Book(dto.getTitle(), dto.getAuthor(), dto.getIsbn(), dto.getPublicationYear());
+        Book book = new Book(dto.getTitle(), dto.getAuthor(), dto.getIsbn(), dto.getPublishedYear());
         return bookRepository.save(book);
     }
 

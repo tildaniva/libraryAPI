@@ -1,6 +1,7 @@
 package com.example.LibraryAPI;
 
 import com.example.LibraryAPI.dto.BookRequest;
+import com.example.LibraryAPI.dto.LoanRequest;
 import com.example.LibraryAPI.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
