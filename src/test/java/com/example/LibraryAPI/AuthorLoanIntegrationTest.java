@@ -99,7 +99,7 @@ class AuthorLoanIntegrationTest {
             latch.await();
             var req = new LoanRequest();
             req.setBookId(bookId);
-            return restTemplate.postForEntity(base() + "/api/v1/loans", req, String.class).getStatusCodeValue();
+            return restTemplate.postForEntity(base() + "/api/v1/loans", req, String.class).getStatusCode().value();
         };
 
         Future<Integer> f1 = executor.submit(task);

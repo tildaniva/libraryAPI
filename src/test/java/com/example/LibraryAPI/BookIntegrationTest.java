@@ -1,8 +1,8 @@
 package com.example.LibraryAPI;
 
-import com.example.LibraryAPI.dto.BookRequest;
-import com.example.LibraryAPI.dto.LoanRequest;
-import com.example.LibraryAPI.repository.BookRepository;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.as;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.example.LibraryAPI.dto.BookRequest;
+import com.example.LibraryAPI.repository.BookRepository;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BookIntegrationTest {
