@@ -17,10 +17,10 @@ public class BookControllerV2 {
   }
 
   @GetMapping
-    public BookV2Wrapper findAllV2(){
-      var data = bookService.findAll().stream()
-              .map(b -> new BookResponseV2(b.getTitle(), b.getAuthor(), true))
-              .toList();
-      return new BookV2Wrapper(data, "v2");
+  public BookV2Wrapper findAllV2() {
+    var data = bookService.findAll().stream()
+        .map(b -> new BookResponseV2(b.getTitle(), b.getAuthor(), true))
+        .toList();
+    return new BookV2Wrapper(data, "v2");
   }
 }

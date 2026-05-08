@@ -18,7 +18,7 @@ public class BookService {
     }
 
     public Book create(BookRequest dto) {
-        if(dto.getIsbn() != null && !dto.getIsbn().isBlank() && bookRepository.existsByIsbn(dto.getIsbn())){
+        if (dto.getIsbn() != null && !dto.getIsbn().isBlank() && bookRepository.existsByIsbn(dto.getIsbn())) {
             throw new DuplicateIsbnException(dto.getIsbn());
         }
         Book book = new Book(dto.getTitle(), dto.getAuthor(), dto.getIsbn(), dto.getPublishedYear());
@@ -34,7 +34,8 @@ public class BookService {
     }
 
     public Book findByIsbn(String isbn) {
-        return bookRepository.findByIsbn(isbn).orElseThrow(() -> new IllegalArgumentException("Book with isbn " + isbn + " not found"));
+        return bookRepository.findByIsbn(isbn)
+                .orElseThrow(() -> new IllegalArgumentException("Book with isbn " + isbn + " not found"));
     }
 
     public List<Book> findByAuthor(String author) {

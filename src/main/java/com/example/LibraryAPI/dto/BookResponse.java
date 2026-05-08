@@ -10,7 +10,7 @@ public class BookResponse {
     private String isbn;
     private int publishedYear;
 
-    public BookResponse(Long id, String title, String author, String isbn, int publishedYear){
+    public BookResponse(Long id, String title, String author, String isbn, int publishedYear) {
         this.id = id;
         this.title = title;
         this.author = author;

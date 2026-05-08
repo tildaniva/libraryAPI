@@ -6,11 +6,11 @@ public class LoanRequest {
     @NotNull
     private Long bookId;
 
-    public Long getBookId(){
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId){
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 }

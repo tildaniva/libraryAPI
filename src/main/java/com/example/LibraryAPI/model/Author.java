@@ -18,9 +18,10 @@ public class Author {
     @OneToMany(mappedBy = "authorEntity")
     private List<Book> books = new ArrayList<>();
 
-    public Author(){}
+    public Author() {
+    }
 
-    public Author(String name){
+    public Author(String name) {
         this.name = name;
     }
 

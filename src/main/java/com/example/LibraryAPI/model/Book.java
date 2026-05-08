@@ -23,12 +23,13 @@ public class Book {
     private int publishedYear;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "author_id")
+    @JoinColumn(name = "author_id")
     private Author authorEntity;
 
-    public Book(){}
+    public Book() {
+    }
 
-    public Book(String title, String author, String isbn, int publishedYear){
+    public Book(String title, String author, String isbn, int publishedYear) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -80,9 +81,11 @@ public class Book {
     }
 
     @Override
-    public boolean equals (Object o){
-        if(this == o) return true;
-        if(!(o instanceof Book book)) return false;
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Book book))
+            return false;
         return Objects.equals(isbn, book.isbn);
     }
 
@@ -93,6 +96,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publishedYear=" + publishedYear +"]";
+        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publishedYear="
+                + publishedYear + "]";
     }
 }

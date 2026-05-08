@@ -18,8 +18,10 @@ public class Loan {
     private LocalDate loanDate;
     private LocalDate returnDate;
 
-    public Loan(){}
-    public Loan(Book book){
+    public Loan() {
+    }
+
+    public Loan(Book book) {
         this.book = book;
         this.loanDate = LocalDate.now();
         this.returnDate = null;
@@ -45,4 +47,3 @@ public class Loan {
         this.returnDate = returnDate;
     }
 }
-

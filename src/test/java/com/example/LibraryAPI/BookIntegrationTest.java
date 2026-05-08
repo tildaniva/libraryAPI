@@ -23,7 +23,7 @@ class BookIntegrationTest {
     @Autowired
     private BookRepository bookRepository;
 
-    String url(){
+    String url() {
         return "http://localhost:" + port + "/api/v1/books";
     }
 
@@ -33,7 +33,7 @@ class BookIntegrationTest {
     }
 
     @Test
-    void postBook_returns201(){
+    void postBook_returns201() {
         var req = new BookRequest();
         req.setTitle("The Great Gatsby");
         req.setAuthor("F. Scott Fitzgerald");
@@ -47,17 +47,17 @@ class BookIntegrationTest {
     }
 
     @Test
-    void getBookById_returns200(){
-     var req = new BookRequest();
-     req.setTitle("Da Vinci Code");
-     req.setAuthor("Dan Brown");
-     req.setIsbn("9780743273565");
-     req.setPublishedYear(2003);
-     var created = restTemplate.postForEntity(url(), req, Map.class);
+    void getBookById_returns200() {
+        var req = new BookRequest();
+        req.setTitle("Da Vinci Code");
+        req.setAuthor("Dan Brown");
+        req.setIsbn("9780743273565");
+        req.setPublishedYear(2003);
+        var created = restTemplate.postForEntity(url(), req, Map.class);
 
-     Integer id = (Integer) created.getBody().get("id");
-     var res = restTemplate.getForEntity(url() + "/" + id, String.class);
-     assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
-     assertThat(res.getBody()).contains("Da Vinci Code");
+        Integer id = (Integer) created.getBody().get("id");
+        var res = restTemplate.getForEntity(url() + "/" + id, String.class);
+        assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(res.getBody()).contains("Da Vinci Code");
     }
 }

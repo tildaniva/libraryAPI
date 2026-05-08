@@ -9,7 +9,7 @@ public class LoanResponse {
     private LocalDate loanDate;
     private LocalDate returnDate;
 
-    public LoanResponse(Long id, Long bookId, String bookTitle, LocalDate loanDate, LocalDate returnDate){
+    public LoanResponse(Long id, Long bookId, String bookTitle, LocalDate loanDate, LocalDate returnDate) {
         this.id = id;
         this.bookId = bookId;
         this.bookTitle = bookTitle;

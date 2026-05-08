@@ -8,7 +8,8 @@ public class AuthorDto {
     private String name;
     private int numberOfBooks;
 
-    public AuthorDto() {}
+    public AuthorDto() {
+    }
 
     public AuthorDto(Long id, String name, int numberOfBooks) {
         this.id = id;

@@ -11,11 +11,11 @@ public class BookV2Wrapper {
         this.version = version;
     }
 
-    public List<BookResponseV2> getData(){
+    public List<BookResponseV2> getData() {
         return data;
     }
 
-    public String getVersion(){
+    public String getVersion() {
         return version;
     }
 }

@@ -8,7 +8,7 @@ public class BookResponseV2 {
     private String author;
     private boolean isAvailable;
 
-    public BookResponseV2(String title, String author, boolean isAvailable){
+    public BookResponseV2(String title, String author, boolean isAvailable) {
         this.title = title;
         this.author = author;
         this.isAvailable = isAvailable;

@@ -24,29 +24,30 @@ public class LoanService {
     }
 
     @Transactional
-    public LoanResponse create(LoanRequest request){
+    public LoanResponse create(LoanRequest request) {
         Book book = bookRepository.findById(request.getBookId())
                 .orElseThrow(() -> new IllegalArgumentException("Book with id " + request.getBookId() + " not found"));
 
-        if (loanRepository.existsByBookIdAndReturnDateIsNull(book.getId())){
+        if (loanRepository.existsByBookIdAndReturnDateIsNull(book.getId())) {
             throw new BookAlreadyOnLoanException();
         }
         try {
             Loan saved = loanRepository.save(new Loan(book));
             return toDto(saved);
-        } catch (DataIntegrityViolationException e){
+        } catch (DataIntegrityViolationException e) {
             throw new IllegalArgumentException("Book is already on loan");
         }
     }
 
-    public List<LoanResponse> activeLoans(){
+    public List<LoanResponse> activeLoans() {
         return loanRepository.findByReturnDateIsNull()
                 .stream()
                 .map(this::toDto)
                 .toList();
     }
 
-    private LoanResponse toDto(Loan loan){
-        return new LoanResponse(loan.getId(), loan.getBook().getId(), loan.getBook().getTitle(), loan.getLoanDate(), loan.getReturnDate());
+    private LoanResponse toDto(Loan loan) {
+        return new LoanResponse(loan.getId(), loan.getBook().getId(), loan.getBook().getTitle(), loan.getLoanDate(),
+                loan.getReturnDate());
     }
 }

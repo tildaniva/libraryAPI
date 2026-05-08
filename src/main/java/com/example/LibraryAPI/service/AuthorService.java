@@ -13,14 +13,15 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public AuthorDto create(AuthorDto dto){
+    public AuthorDto create(AuthorDto dto) {
         Author a = new Author(dto.getName());
         Author savedAuthor = authorRepository.save(a);
         return new AuthorDto(savedAuthor.getId(), savedAuthor.getName(), 0);
     }
 
     public Author findEntityById(Long id) {
-        return authorRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Author with id " + id + " not found"));
+        return authorRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Author with id " + id + " not found"));
     }
 
     public AuthorDto findById(Long id) {

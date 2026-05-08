@@ -26,7 +26,7 @@ public class BookControllerV1 {
     @ApiResponse(responseCode = "201", description = "Created")
     @ApiResponse(responseCode = "400", description = "Invalid input")
     @PostMapping
-    public ResponseEntity<BookResponse> create(@Valid @RequestBody BookRequest dto){
+    public ResponseEntity<BookResponse> create(@Valid @RequestBody BookRequest dto) {
         Book saved = bookService.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(toResponse(saved));
     }
@@ -34,7 +34,7 @@ public class BookControllerV1 {
     @Operation(summary = "Get all books")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
-    public List<BookResponse> findAll(){
+    public List<BookResponse> findAll() {
         return bookService.findAll().stream().map(this::toResponse).toList();
     }
 
@@ -42,16 +42,16 @@ public class BookControllerV1 {
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "404", description = "Book not found")
     @GetMapping("/{id}")
-    public BookResponse findById(@PathVariable Long id){
+    public BookResponse findById(@PathVariable Long id) {
         return toResponse(bookService.findById(id));
     }
 
     @GetMapping("/search")
-    public List<BookResponse> findByAuthor(@RequestParam String author){
+    public List<BookResponse> findByAuthor(@RequestParam String author) {
         return bookService.findByAuthor(author).stream().map(this::toResponse).toList();
     }
 
-    private BookResponse toResponse(Book b){
+    private BookResponse toResponse(Book b) {
         return new BookResponse(b.getId(), b.getTitle(), b.getAuthor(), b.getIsbn(), b.getPublishedYear());
     }
 }

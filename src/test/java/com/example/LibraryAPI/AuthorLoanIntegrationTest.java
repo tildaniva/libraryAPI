@@ -32,7 +32,7 @@ class AuthorLoanIntegrationTest {
     @Autowired
     private AuthorRepository authorRepository;
 
-    String base(){
+    String base() {
         return "http://localhost:" + port;
     }
 
@@ -62,28 +62,28 @@ class AuthorLoanIntegrationTest {
     }
 
     @Test
-    void loanSameBookTwice_secondIs400(){
+    void loanSameBookTwice_secondIs400() {
         var b = new BookRequest();
         b.setTitle("Book");
         b.setAuthor("A");
         b.setIsbn("123");
         b.setPublishedYear(2023);
-       var createdBook = restTemplate.postForEntity(base() + "/api/v1/books", b, Map.class);
-       Long bookId = ((Number) createdBook.getBody().get("id")).longValue();
+        var createdBook = restTemplate.postForEntity(base() + "/api/v1/books", b, Map.class);
+        Long bookId = ((Number) createdBook.getBody().get("id")).longValue();
 
-       var loanReq = new LoanRequest();
-       loanReq.setBookId(bookId);
+        var loanReq = new LoanRequest();
+        loanReq.setBookId(bookId);
 
-       var first = restTemplate.postForEntity(base() + "/api/v1/loans", loanReq, String.class);
-       var second = restTemplate.postForEntity(base() + "/api/v1/loans", loanReq, String.class);
+        var first = restTemplate.postForEntity(base() + "/api/v1/loans", loanReq, String.class);
+        var second = restTemplate.postForEntity(base() + "/api/v1/loans", loanReq, String.class);
 
-       assertThat(first.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-       assertThat(second.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertThat(first.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(second.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
 
     }
 
     @Test
-    void concurrentLoan_onlyOneCreated() throws Exception{
+    void concurrentLoan_onlyOneCreated() throws Exception {
         var b = new BookRequest();
         b.setTitle("Concurrent");
         b.setAuthor("B");
@@ -112,7 +112,6 @@ class AuthorLoanIntegrationTest {
         assertThat((s1 == 201 && s2 == 400) || (s1 == 400 && s2 == 201)).isTrue();
         assertThat(loanRepository.count()).isEqualTo(1);
         executor.shutdown();
-
 
     }
 }

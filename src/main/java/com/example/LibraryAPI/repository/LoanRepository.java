@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface LoanRepository extends JpaRepository<Loan, Long> {
     boolean existsByBookIdAndReturnDateIsNull(Long bookId);
+
     List<Loan> findByReturnDateIsNull();
 }
