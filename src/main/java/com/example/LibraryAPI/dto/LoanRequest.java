@@ -3,7 +3,7 @@ package com.example.LibraryAPI.dto;
 import jakarta.validation.constraints.NotNull;
 
 public class LoanRequest {
-    @NotNull
+    @NotNull(message = "Book Id is required")
     private Long bookId;
 
     public Long getBookId() {

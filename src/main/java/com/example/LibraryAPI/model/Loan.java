@@ -1,6 +1,8 @@
 package com.example.LibraryAPI.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -15,6 +17,8 @@ public class Loan {
     @JoinColumn(name = "book_id", unique = true)
     private Book book;
 
+    @NotNull(message = "Loan date is required")
+    @Future(message ="Loan must be in the duture")
     private LocalDate loanDate;
     private LocalDate returnDate;
 
