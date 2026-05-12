@@ -7,6 +7,9 @@ import com.example.LibraryAPI.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +37,9 @@ public class BookControllerV1 {
     @Operation(summary = "Get all books")
     @ApiResponse(responseCode = "200", description = "OK")
     @GetMapping
-    public List<BookResponse> findAll() {
-        return bookService.findAll().stream().map(this::toResponse).toList();
+    public Page<BookResponse> findAll(Pageable pageable) {
+        return bookService.findAll(pageable)
+        .map(this::toResponse);
     }
 
     @Operation(summary = "Get book by id")

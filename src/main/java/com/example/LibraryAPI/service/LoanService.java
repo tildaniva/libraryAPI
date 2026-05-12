@@ -8,6 +8,8 @@ import com.example.LibraryAPI.model.Loan;
 import com.example.LibraryAPI.repository.BookRepository;
 import com.example.LibraryAPI.repository.LoanRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -39,11 +41,10 @@ public class LoanService {
         }
     }
 
-    public List<LoanResponse> activeLoans() {
-        return loanRepository.findByReturnDateIsNull()
-                .stream()
-                .map(this::toDto)
-                .toList();
+    public Page<LoanResponse> activeLoans(Pageable pageable) {
+        return loanRepository.findByReturnDateIsNull(pageable)
+                .map(this::toDto);
+
     }
 
     private LoanResponse toDto(Loan loan) {

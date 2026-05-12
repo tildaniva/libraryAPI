@@ -6,6 +6,8 @@ import com.example.LibraryAPI.service.LoanService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +33,7 @@ public class LoanController {
     }
 
     @GetMapping
-    public List<LoanResponse> activeLoans() {
-        return loanService.activeLoans();
+    public Page<LoanResponse> activeLoans(Pageable pageable) {
+        return loanService.activeLoans(pageable);
     }
 }

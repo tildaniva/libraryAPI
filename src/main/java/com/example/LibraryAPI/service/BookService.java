@@ -5,6 +5,9 @@ import com.example.LibraryAPI.exception.BookNotFoundException;
 import com.example.LibraryAPI.exception.DuplicateIsbnException;
 import com.example.LibraryAPI.model.Book;
 import com.example.LibraryAPI.repository.BookRepository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +28,8 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public List<Book> findAll() {
-        return bookRepository.findAll();
+    public Page<Book> findAll(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 
     public Book findById(Long id) {
