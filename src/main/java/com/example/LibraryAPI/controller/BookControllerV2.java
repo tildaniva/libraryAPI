@@ -22,7 +22,7 @@ public class BookControllerV2 {
     var data = bookService.findAll(pageable)
         .map(b -> new BookResponseV2(b.getTitle(), b.getAuthor(), true))
         .getContent();
-        
+
     return new BookV2Wrapper(data, "v2");
   }
 }

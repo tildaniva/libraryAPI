@@ -18,7 +18,7 @@ public class Loan {
     private Book book;
 
     @NotNull(message = "Loan date is required")
-    @Future(message ="Loan must be in the duture")
+    @Future(message = "Loan must be in the duture")
     private LocalDate loanDate;
     private LocalDate returnDate;
 

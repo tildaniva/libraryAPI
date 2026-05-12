@@ -39,7 +39,7 @@ public class BookControllerV1 {
     @GetMapping
     public Page<BookResponse> findAll(Pageable pageable) {
         return bookService.findAll(pageable)
-        .map(this::toResponse);
+                .map(this::toResponse);
     }
 
     @Operation(summary = "Get book by id")
