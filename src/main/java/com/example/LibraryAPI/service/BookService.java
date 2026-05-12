@@ -6,6 +6,7 @@ import com.example.LibraryAPI.exception.DuplicateIsbnException;
 import com.example.LibraryAPI.model.Book;
 import com.example.LibraryAPI.repository.BookRepository;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ public class BookService {
         return bookRepository.findAll(pageable);
     }
 
+    @Cacheable(value = "books", key = "#id")
     public Book findById(Long id) {
         return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
     }

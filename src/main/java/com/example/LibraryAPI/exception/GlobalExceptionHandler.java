@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
         }
 
         @ExceptionHandler({ BookAlreadyOnLoanException.class, DuplicateIsbnException.class,
-                        MethodArgumentNotValidException.class })
+        })
         @ResponseStatus(HttpStatus.BAD_REQUEST)
         public ErrorResponse handleBadRequest(RuntimeException ex, HttpServletRequest req) {
                 return new ErrorResponse(
