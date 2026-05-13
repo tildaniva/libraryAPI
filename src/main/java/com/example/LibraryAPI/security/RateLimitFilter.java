@@ -31,21 +31,21 @@ public class RateLimitFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        FilterChain filterChain)
-        throws ServletException, IOException{
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain)
+            throws ServletException, IOException {
 
-            String ip = request.getRemoteAddr();
+        String ip = request.getRemoteAddr();
 
-            Bucket bucket = buckets.computeIfAbsent(ip, k -> createNewBucket());
+        Bucket bucket = buckets.computeIfAbsent(ip, k -> createNewBucket());
 
-            if (bucket.tryConsume(1)){
-                filterChain.doFilter(request, response);
-            } else {
-                response.setStatus(429);
-                response.getWriter().write("Too many request")
+        if (bucket.tryConsume(1)) {
+            filterChain.doFilter(request, response);
+        } else {
+            response.setStatus(429);
+            response.getWriter().write("Too many request");
 
-            }
         }
+    }
 }
